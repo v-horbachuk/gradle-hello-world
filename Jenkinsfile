@@ -9,20 +9,17 @@ node ("slave1"){
   }
 
    // Mark the code build 'stage'....
-  try 
-   {
+  try {
      stage ('Build Gradle')
      {
         def gradleHome = tool 'gradle4'
         sh "${gradleHome}/bin/gradle clean install"
-   }
-   catch(Exeption e)
-   {
-     addErrorBadge id: '1', text: 'BUILD FAILED'
+   } catch(Exeption e) {
+     addErrorBadge id: '1', text: 'BUILD FAILED!'
    }
     stage ('Post')
    {
-      addBadge icon: '', id: '1', link: '', text: 'BUILD SUCCESS!'
+      addBadge icon: '', id: '2', link: '', text: 'BUILD SUCCESS!'
      
    }
 }
