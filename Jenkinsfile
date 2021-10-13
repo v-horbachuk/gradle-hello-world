@@ -16,7 +16,7 @@ node ("slave1"){
         def gradleHome = tool 'gradle4'
         sh "${gradleHome}/bin/gradle clean install"
    }
-   catch(ex)
+   catch(Exeption e)
    {
      addErrorBadge id: '1', text: 'BUILD FAILED'
    }
