@@ -15,7 +15,6 @@ node ("slave1"){
      {
         def gradleHome = tool 'gradle4'
         sh "${gradleHome}/bin/gradle build"
-        sh "exit 1"
      }
    } 
    catch(e) 
