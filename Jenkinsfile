@@ -17,7 +17,7 @@ node ("slave1"){
         sh "${gradleHome}/bin/gradle clean install"
      }
    } 
-   catch(Exeption e) 
+   catch(e) 
    {
      addErrorBadge id: '1', text: 'BUILD FAILED!'
    }
