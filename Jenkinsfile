@@ -1,6 +1,6 @@
 #!groovy
 
-node ("slave"){
+node ("slave1"){
    // Mark the code checkout 'stage'....
   stage ('Checkout')
   {
@@ -16,7 +16,7 @@ node ("slave"){
         def gradleHome = tool 'gradle4'
         sh "${gradleHome}/bin/gradle clean install"
    }
-   catch (ex)
+   catch(ex)
    {
      addErrorBadge id: '1', text: 'BUILD FAILED'
    }
