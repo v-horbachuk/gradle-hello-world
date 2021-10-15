@@ -73,9 +73,9 @@ node ("worker"){
    }
         stage ('func-test')
         {
-            def tests = ["one" : { sh "sh /test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
-                     "two" : { sh "sh /test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
-                     "tree" : { sh "sh /test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Playtika!'"}]
+            def tests = ["one" : { sh "sh test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
+                     "two" : { sh "sh test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
+                     "tree" : { sh "sh test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Playtika!'"}]
             parallel tests
         }
     stage ('Post')
