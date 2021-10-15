@@ -13,7 +13,7 @@ pipeline
     {
         stage ('checkout')
         {
-            step
+            step ('1')
             {
                 checkout scm       
             }
@@ -21,8 +21,11 @@ pipeline
         
         stage ('build gradle')
         {
-            echo 'Path is' + env.PATH
-            sh 'gradle build'    
+            step ('2')
+            {
+                echo 'Path is' + env.PATH
+                sh 'gradle build'
+            }
         }
     }
     post ('failure')
