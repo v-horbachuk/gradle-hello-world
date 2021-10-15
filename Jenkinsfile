@@ -13,7 +13,7 @@ pipeline
     {
         stage ('checkout')
         {
-            step ('1')
+            steps
             {
                 checkout scm       
             }
@@ -21,7 +21,7 @@ pipeline
         
         stage ('build gradle')
         {
-            step ('2')
+            steps
             {
                 echo 'Path is' + env.PATH
                 sh 'gradle build'
