@@ -3,7 +3,7 @@ pipeline
 {
     agent
     {
-        lable 'worker'
+        label 'worker'
     }
     tools 
     {
