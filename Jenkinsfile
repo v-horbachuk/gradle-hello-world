@@ -27,6 +27,23 @@ pipeline
                 sh 'gradle build'
             }
         }
+        stage ('unit-test')
+        {
+            steps
+            {
+                sh 'gradle test'
+                junit '**/build/test-results/test/*.xml'
+            }
+        }
+        stage ('func-test')
+        {
+            steps
+            {
+                tests = ["one" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Otomato!'"},
+                         "two" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
+                         "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Otomato!'"}]
+                parallel tests
+        }
     }
     post ('failure')
     {
