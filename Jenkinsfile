@@ -1,6 +1,6 @@
 #!groovy
 flag = 0
-node ("slave1"){
+node ("worker"){
    // Mark the code checkout 'stage'....
   stage ('Checkout')
   {
