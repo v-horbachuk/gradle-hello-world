@@ -27,25 +27,26 @@ pipeline
                 sh 'gradle build'
             }
         }
-        stage ('unit-test')
-        {
-            steps
-            {
-                sh 'gradle test'
-                junit '**/build/test-results/test/*.xml'
-                archiveArtifacts artifacts: '*.xml', followSymlinks: false
-            }
-        }
-//         stage ('func-test')
+//         stage ('unit-test')
 //         {
 //             steps
 //             {
-//                 def tests = ["one" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
-//                          "two" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
-//                          "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Playtika!'"}]
-//                 parallel tests
+//                 sh 'gradle test'
+//                 junit '**/build/test-results/test/*.xml'
+//                 archiveArtifacts artifacts: '*.xml', followSymlinks: false
 //             }
 //         }
+        stage ('func-test')
+        {
+            steps
+            {
+                def tests = [:]
+//                         ["one" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
+//                          "two" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
+//                          "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Playtika!'"}]
+                parallel tests
+            }
+        }
     }
     post ('failure')
     {
