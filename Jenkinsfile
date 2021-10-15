@@ -33,15 +33,16 @@ pipeline
             {
                 sh 'gradle test'
                 junit '**/build/test-results/test/*.xml'
+                archiveArtifacts artifacts: '*.xml', followSymlinks: false
             }
         }
         stage ('func-test')
         {
             steps
             {
-                def tests = ["one" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Otomato!'"},
+                def tests = ["one" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
                          "two" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
-                         "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Otomato!'"}]
+                         "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Playtika!'"}]
                 parallel tests
             }
         }
@@ -50,7 +51,7 @@ pipeline
     {
         failure
         {
-            addBadge icon: 'red.gif', id: '1', link: '', text: 'FAILED TO INSTALL GRADLE'
+            addBadge icon: 'red.gif', id: '2', link: '', text: 'FAILED TO INSTALL GRADLE'
         }
         success
         {
