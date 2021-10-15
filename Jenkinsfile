@@ -43,6 +43,7 @@ pipeline
                          "two" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar otoMato 'Hello Otomato!'"},
                          "tree" : { sh "test-data/int-test.sh build/libs/oto-gradle-1.0.jar playtikA 'Hello Otomato!'"}]
                 parallel tests
+            }
         }
     }
     post ('failure')
