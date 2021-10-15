@@ -27,15 +27,6 @@
 //                 sh 'gradle build'
 //             }
 //         }
-//         stage ('unit-test')
-//         {
-//             steps
-//             {
-//                 sh 'gradle test'
-//                 junit '**/build/test-results/test/*.xml'
-//                 archiveArtifacts artifacts: '*.xml', followSymlinks: false
-//             }
-//         }
 //     }
 //     post ('failure')
 //     {
@@ -71,6 +62,11 @@ node ("worker"){
    {
       flag = 1
    }
+                stage ('unit-test')
+        {
+                sh 'gradle test'
+                junit '**/build/test-results/test/*.xml'
+        }
         stage ('func-test')
         {
             def tests = ["one" : { sh "sh test-data/int-test.sh build/libs/oto-gradle-1.0.jar vaSyl 'Hello Vasyl!'"},
